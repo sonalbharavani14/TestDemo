@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: set up JDK 1.8
+        uses: actions/setup-java@master
+        with:
+          java-version: 1.8
+      - name: Make Gradle executable
+        run: git update-index --chmod=+x ./gradlew
+#      - name: Build Debug APK
+#        run: ./gradlew assembleDebug
+#      - name: Test Debug APK
+#        run: ./gradlew -Pci --console=plain :app:testDebug
+      - name: Build Release APK
+        run: ./gradlew assembleRelease
+      - name: Releasing using Hub
+        run: ./gradlew publishApk
+        env:
+          GITHUB_TOKEN: bc5c96ff71552afa50eea5400eb14806341ad19f
+          APP_FOLDER: app
+          RELEASE_TITLE: New Build
+#          BS_USERNAME: vendiumab@gmail.com
+#          BS_PASSWORD: 1337Tibbelit
+#      - name: upload-to-release
+#        description: Uploads a file to a GitHub release
+#        author: struqtur
+#        branding:
+#          color: blue
+#          icon: package
+#        runs:
+#          using: docker
+#          image: Dockerfile
