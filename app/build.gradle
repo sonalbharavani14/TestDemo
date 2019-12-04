@@ -13,7 +13,7 @@ android {
         applicationId "com.app.gitcitest"
         minSdkVersion 15
         targetSdkVersion 29
-        versionCode 4
+        versionCode 5
         versionName "1.1"
         flavorDimensions "default"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -45,6 +45,11 @@ android {
 
     productFlavors {
         MyApp {
+            applicationId "com.app.gitcitest"
+            signingConfig signingConfigs.struqturrelease
+        }
+        MyApp1 {
+            applicationId "com.app.gitcitest1"
             signingConfig signingConfigs.struqturrelease
         }
     }
