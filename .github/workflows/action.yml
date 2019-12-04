@@ -23,7 +23,7 @@ jobs:
       - name: Build Release APK
         run: ./gradlew assembleMyAppRelease
       - name: Releasing using Hub
-        run: ./gradlew publishMyAppApk
+        run: ./gradlew publishMyAppReleaseApk
         env:
           GITHUB_TOKEN: bc5c96ff71552afa50eea5400eb14806341ad19f
           APP_FOLDER: app
