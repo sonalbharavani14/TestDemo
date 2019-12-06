@@ -2,8 +2,11 @@ name: CI
 
 on:
   push:
+    branches:
+      - master
     tags:
-      - 'v1*'
+      - 'v1.*'
+
 
 jobs:
   build:
@@ -20,10 +23,10 @@ jobs:
 #        run: ./gradlew assembleDebug
 #      - name: Test Debug APK
 #        run: ./gradlew -Pci --console=plain :app:testDebug
-      - name: Build Release APK
-        run: ./gradlew assembleRelease
-      - name: Releasing using Hub
-        run: ./gradlew publishApk
+#      - name: Build Release APK
+#        run: ./gradlew assembleRelease
+#      - name: Releasing using Hub
+#        run: ./gradlew publishApk
         env:
           GITHUB_TOKEN: bc5c96ff71552afa50eea5400eb14806341ad19f
           APP_FOLDER: app
@@ -36,7 +39,6 @@ jobs:
 #        branding:
 #          color: blue
 #          icon: package
-
 #        runs:
 #          using: docker
 #          image: Dockerfile
