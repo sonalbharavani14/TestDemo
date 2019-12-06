@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - master
+    tags:
+      - v1
 
 jobs:
   build:
@@ -21,9 +23,9 @@ jobs:
 #      - name: Test Debug APK
 #        run: ./gradlew -Pci --console=plain :app:testDebug
       - name: Build Release APK
-        run: ./gradlew assembleMyAppRelease
+        run: ./gradlew assembleRelease
       - name: Releasing using Hub
-        run: ./gradlew publishMyAppReleaseApk
+        run: ./gradlew publishApk
         env:
           GITHUB_TOKEN: bc5c96ff71552afa50eea5400eb14806341ad19f
           APP_FOLDER: app
